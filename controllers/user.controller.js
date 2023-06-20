@@ -22,8 +22,11 @@ export const userRegister = async (req, res) => {
 
     await user.save();
 
+    let userObj = user._doc;
+    delete userObj.password, delete userObj.salt;
+
     res.status(201).json({
-      user,
+      user: userObj,
       token,
     });
   } catch (error) {
@@ -55,8 +58,11 @@ export const userLogin = async (req, res) => {
       expiresIn: "24h",
     });
 
+    let userObj = user._doc;
+    delete userObj.password, delete userObj.salt;
+
     res.status(200).json({
-      user,
+      user: userObj,
       token,
     });
   } catch (error) {
