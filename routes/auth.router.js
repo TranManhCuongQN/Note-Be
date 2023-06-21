@@ -6,7 +6,7 @@ import express from "express";
 
 const router = express.Router();
 router.post(
-  "/signup",
+  "/register",
   body("username")
     .isLength({ min: 8 })
     .withMessage("username must be at least 8 characters"),

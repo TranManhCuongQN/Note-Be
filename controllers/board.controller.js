@@ -11,7 +11,9 @@ export const createBoard = async (req, res) => {
     });
     res.status(201).json(board);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -20,7 +22,9 @@ export const getAllBoards = async (req, res) => {
     const boards = await Board.find({ user: req.user._id }).sort("-position");
     res.status(200).json(boards);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -33,7 +37,9 @@ export const updatePosition = async (req, res) => {
     }
     res.status(200).json("updated");
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -52,7 +58,9 @@ export const getOneBoard = async (req, res) => {
     board.sections = sections;
     res.status(200).json(board);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -88,7 +96,9 @@ export const updateBoard = async (req, res) => {
     const board = await Board.findByIdAndUpdate(boardId, { $set: req.body });
     res.status(200).json(board);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -100,7 +110,9 @@ export const getFavouriteBoards = async (req, res) => {
     }).sort("-favouritePosition");
     res.status(200).json(favourites);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -115,7 +127,9 @@ export const updateFavouritePosition = async (req, res) => {
     }
     res.status(200).json("updated");
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -155,6 +169,8 @@ export const deleteBoard = async (req, res) => {
 
     res.status(200).json("deleted");
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };

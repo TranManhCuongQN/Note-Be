@@ -8,7 +8,9 @@ export const createSection = async (req, res) => {
     section.tasks = [];
     res.status(201).json(section);
   } catch (err) {
-    res.status(500).josn(err);
+    res.status(500).json({
+      message: err,
+    });
   }
 };
 
@@ -21,7 +23,9 @@ export const updateSection = async (req, res) => {
 
     res.status(200).json(section);
   } catch (err) {
-    res.status(500).josn(err);
+    res.status(500).josn({
+      message: err,
+    });
   }
 };
 
@@ -32,6 +36,8 @@ export const deleteSection = async (req, res) => {
     await Section.deleteOne({ _id: sectionId });
     res.status(200).json("deleted");
   } catch (err) {
-    res.status(500).josn(err);
+    res.status(500).josn({
+      message: err,
+    });
   }
 };

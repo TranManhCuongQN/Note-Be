@@ -46,7 +46,7 @@ export const userLogin = async (req, res) => {
 
     if (!user)
       return res.status(400).json({
-        message: "Username not found",
+        message: "User not exist",
       });
 
     if (!user.validatePassword(password))

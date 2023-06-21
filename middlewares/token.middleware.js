@@ -18,12 +18,13 @@ const tokenDecode = (req) => {
 export const verifyToken = async (req, res, next) => {
   const tokenDecoded = tokenDecode(req);
   if (tokenDecoded) {
-    const user = await User.findById(tokenDecode.data);
+    const user = await User.findById(tokenDecoded.data);
     if (!user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
     req.user = user;
     next();
+  } else {
+    return res.status(401).json({ message: "Unauthorized" });
   }
-  return res.status(401).json({ message: "Unauthorized" });
 };

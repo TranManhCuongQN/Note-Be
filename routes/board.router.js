@@ -10,7 +10,8 @@ import {
   updateBoard,
   updateFavouritePosition,
   updatePosition,
-} from "../controllers/board.controller";
+  deleteBoard,
+} from "../controllers/board.controller.js";
 
 const router = express.Router();
 

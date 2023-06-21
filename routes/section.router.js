@@ -6,7 +6,7 @@ import {
   createSection,
   deleteSection,
   updateSection,
-} from "../controllers/section.controller";
+} from "../controllers/section.controller.js";
 
 const router = express.Router();
 
