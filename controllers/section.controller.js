@@ -21,10 +21,10 @@ export const updateSection = async (req, res) => {
       $set: req.body,
     });
     section._doc.tasks = [];
-    console.log(section);
+
     res.status(200).json(section);
   } catch (err) {
-    res.status(500).josn({
+    res.status(500).json({
       message: err,
     });
   }

@@ -15,7 +15,6 @@ const router = express.Router({
 router.post(
   "/",
   param("boardId").custom((value) => {
-    console.log("value", value);
     if (!isObjectId(value)) {
       return Promise.reject("invalid id");
     } else return Promise.resolve();
