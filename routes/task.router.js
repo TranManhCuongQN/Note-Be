@@ -9,7 +9,9 @@ import {
 } from "../controllers/task.controller.js";
 import express from "express";
 
-const router = express.Router();
+const router = express.Router({
+  mergeParams: true,
+});
 
 router.post(
   "/",

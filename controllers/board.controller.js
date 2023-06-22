@@ -9,6 +9,7 @@ export const createBoard = async (req, res) => {
       user: req.user._id,
       position: boardsCount > 0 ? boardsCount : 0,
     });
+
     res.status(201).json(board);
   } catch (err) {
     res.status(500).json({
@@ -53,9 +54,9 @@ export const getOneBoard = async (req, res) => {
       const tasks = await Task.find({ section: section.id })
         .populate("section")
         .sort("-position");
-      section.tasks = tasks;
+      section._doc.tasks = tasks;
     }
-    board.sections = sections;
+    board._doc.sections = sections;
     res.status(200).json(board);
   } catch (err) {
     res.status(500).json({

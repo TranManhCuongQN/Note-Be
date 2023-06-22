@@ -13,7 +13,9 @@ import {
   deleteBoard,
 } from "../controllers/board.controller.js";
 
-const router = express.Router();
+const router = express.Router({
+  mergeParams: true,
+});
 
 router.post("/", verifyToken, createBoard);
 router.get("/", verifyToken, getAllBoards);

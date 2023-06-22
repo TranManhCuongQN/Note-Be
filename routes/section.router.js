@@ -8,11 +8,14 @@ import {
   updateSection,
 } from "../controllers/section.controller.js";
 
-const router = express.Router();
+const router = express.Router({
+  mergeParams: true,
+});
 
 router.post(
   "/",
   param("boardId").custom((value) => {
+    console.log("value", value);
     if (!isObjectId(value)) {
       return Promise.reject("invalid id");
     } else return Promise.resolve();

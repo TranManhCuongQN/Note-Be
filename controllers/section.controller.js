@@ -5,7 +5,7 @@ export const createSection = async (req, res) => {
   const { boardId } = req.params;
   try {
     const section = await Section.create({ board: boardId });
-    section.tasks = [];
+    section._doc.tasks = [];
     res.status(201).json(section);
   } catch (err) {
     res.status(500).json({
@@ -20,7 +20,8 @@ export const updateSection = async (req, res) => {
     const section = await Section.findByIdAndUpdate(sectionId, {
       $set: req.body,
     });
-
+    section._doc.tasks = [];
+    console.log(section);
     res.status(200).json(section);
   } catch (err) {
     res.status(500).josn({
